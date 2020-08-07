@@ -1,0 +1,9 @@
+env:
+  - PHP_BUILD_VERSION=7.4
+  - PHP_BUILD_VERSION=7.3
+
+script:
+  - echo "$DOCKER_HUB_TOKEN" | docker login -u larueli --password-stdin
+  - docker build --build-arg PHP_BUILD_VERSION=${PHP_BUILD_VERSION} -t larueli/php-base-image:${PHP_BUILD_VERSION} .
+  - docker push larueli/php-base-image:${PHP_BUILD_VERSION}
+        
