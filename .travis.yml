@@ -26,9 +26,9 @@ script:
 
 jobs:
   include:
+    - stage: Build Docker Images
     - stage: Deploy
       if: type != pull_request
-      skip_cleanup: true
       env:
         - PHP_BUILD_VERSION=7.4
       script:
