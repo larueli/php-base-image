@@ -1,6 +1,7 @@
 os: linux
 dist: bionic
 language: php
+sudo: required
 
 env:
   - PHP_BUILD_VERSION=7.4
@@ -14,9 +15,10 @@ before_install:
   - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install qemu-user-static
   - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
   - mkdir -vp ~/.docker/cli-plugins/
-  - curl --silent -L "https://github.com/docker/buildx/releases/download/v0.3.0/buildx-v0.3.0.linux-amd64" > ~/.docker/cli-plugins/docker-buildx
+  - curl --silent -L "https://github.com/docker/buildx/releases/download/v0.4.1/buildx-v0.4.1.linux-amd64" > ~/.docker/cli-plugins/docker-buildx
   - chmod a+x ~/.docker/cli-plugins/docker-buildx
-  - docker buildx create --use
+  - docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+  - docker buildx create --name xbuilder --use
   - docker buildx inspect --bootstrap
 
 script:
