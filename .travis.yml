@@ -24,3 +24,16 @@ before_install:
 script:
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then echo "$DOCKER_HUB_TOKEN" | docker login -u larueli --password-stdin && PUSH="--push"; fi
   - docker buildx build $PUSH --platform linux/arm/v7,linux/arm64/v8,linux/amd64 --build-arg PHP_BUILD_VERSION=${PHP_BUILD_VERSION} -t larueli/php-base-image:${PHP_BUILD_VERSION} .
+
+jobs:
+  include:
+    - stage: Deploy
+      if: type != pull_request
+      skip_cleanup: true
+      env:
+        - PHP_BUILD_VERSION=7.4
+      script:
+        - echo "$DOCKER_HUB_TOKEN" | docker login -u larueli --password-stdin
+        - docker pull larueli/php-base-image:7.4
+        - docker tag larueli/php-base-image:7.4 larueli/php-base-image:latest
+        - docker push larueli/php-base-image:latest
