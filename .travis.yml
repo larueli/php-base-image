@@ -1,7 +1,6 @@
 os: linux
 dist: bionic
 language: php
-sudo: required
 
 env:
   - PHP_BUILD_VERSION=7.4
