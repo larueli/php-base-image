@@ -13,7 +13,7 @@ COPY entrypoint.sh /entrypoint.sh
 ADD https://raw.githubusercontent.com/mlocati/docker-php-extension-installer/master/install-php-extensions /usr/local/bin/
 
 RUN chmod uga+x /usr/local/bin/install-php-extensions && sync && \
-    apt-get update && apt-get install -y vim zip unzip git rsync nano && \
+    apt-get update && apt-get install -y vim zip unzip git rsync dos2unix nano && \
     install-php-extensions gd intl ctype curl phar filter iconv ldap mcrypt bcmath xdebug imap mongodb pgsql oauth pdo_pgsql pdo_firebird pdo_odbc pdo_sqlsrv sqlsrv yaml json pdo simplexml xml tokenizer xmlwriter xmlreader pdo_mysql zip intl && \
     apt-get autoremove -y && a2enmod rewrite && \
     chgrp -R 0 /var/www/html && chmod g+rwx -R /var/www/html && chmod +x /entrypoint.sh && chmod g+rwx -R /etc/apache2 && \
