@@ -6,18 +6,23 @@ Easily deploy your php apps to containers, no difficult php extensions to instal
 Just do
 
 ```
-#Your own dockerfile for your project just needs this
+#Your own dockerfile for your project just needs something like this
 
-FROM larueli/php-base-image:7.4
+FROM larueli/php-base-image:7.3
 
 COPY . /var/www/html/
 
-# USER 0  #Switch back to root user in order to install packages of your own
-# RUN apt-get update && apt-get install -y optipng jpegoptim && apt-get autoremove -y # don't forget to update the package list and to autoremove
-# USER 1420:0 # VERY IMPORTANT : switch back to the default larueli/php-base-image user 
+VOLUME /var/www/html/uploads
 
-# The workdir for larueli/php-base-image is /var/www/html so you can just do this :
-RUN composer install --no-interaction --no-dev --no-ansi && composer dump-autoload --no-dev --classmap-authoritative
+USER 0
+
+RUN apt-get update && apt-get install -y optipng jpegoptim && apt-get autoremove -y && \
+    echo "/usr/local/bin/php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration" > /docker-entrypoint-init.d/migrations.sh && \
+    composer install --no-interaction --no-dev --no-ansi && composer dump-autoload --no-dev --classmap-authoritative && \
+    chmod g=rwx -R /var/www/html
+# last line very important : you have to allow full access the group root for openshift
+
+USER 1420:0
 ```
 
 You can put your scripts inside `/docker-entrypoint-init.d/`. They will be run at each container start.
