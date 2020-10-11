@@ -17,10 +17,10 @@ COPY . /var/www/html/
 # USER 1420:0 # VERY IMPORTANT : switch back to the default larueli/php-base-image user 
 
 # The workdir for larueli/php-base-image is /var/www/html so you can just do this :
-RUN composer install
+RUN composer install --no-interaction --no-dev --no-ansi && composer dump-autoload --no-dev --classmap-authoritative
 ```
 
-You can put your scripts inside `/docker-entrypoint-init.d/`. They wil be run at each container start.
+You can put your scripts inside `/docker-entrypoint-init.d/`. They will be run at each container start.
 
 Don't forget to add a `.dockerignore` in your project, for two reasons :
 * size of your docker image
