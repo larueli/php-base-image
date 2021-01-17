@@ -1,5 +1,7 @@
 # Base image for PHP Apps
 
+[![Build Status](https://travis-ci.com/larueli/php-base-image.svg?branch=master)](https://travis-ci.com/larueli/php-base-image)
+
 I wanted to have a base image for all my php web projects, suitable with openshift (**random uid inside container**).
 
 Easily deploy your php apps to containers, no difficult php extensions to install or anything.
