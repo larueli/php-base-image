@@ -50,18 +50,24 @@ Don't forget to add a `.dockerignore` in your project, for two reasons :
 * Composer installed
 * PHP extensions from the base image and I added some
 ```
+[PHP Modules]
+apcu
 bcmath
+bz2
 Core
 ctype
 curl
 date
 dom
+exif
 fileinfo
 filter
 ftp
 gd
+gmp
 hash
 iconv
+imagick
 imap
 intl
 json
@@ -69,13 +75,13 @@ ldap
 libxml
 mbstring
 mcrypt
+memcached
 mongodb
 mysqlnd
 OAuth
 openssl
 pcre
 PDO
-pdo_dblib
 PDO_Firebird
 pdo_mysql
 PDO_ODBC
@@ -86,6 +92,7 @@ pgsql
 Phar
 posix
 readline
+redis
 Reflection
 session
 SimpleXML
@@ -100,8 +107,13 @@ xml
 xmlreader
 xmlwriter
 yaml
+Zend OPcache
 zip
 zlib
+
+[Zend Modules]
+Xdebug
+Zend OPcache
 ```
 
 # Author
