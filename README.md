@@ -7,7 +7,7 @@ I wanted to have a base image for all my php web projects, suitable with openshi
 Easily deploy your php apps to containers, no difficult php extensions to install or anything.
 Just do
 
-```
+```Dockerfile
 #Your own dockerfile for your project just needs something like this
 
 FROM larueli/php-base-image:7.3
@@ -30,6 +30,7 @@ USER 1420:0
 You can put your scripts inside `/docker-entrypoint-init.d/`. They will be run at each container start.
 
 Don't forget to add a `.dockerignore` in your project, for two reasons :
+
 * size of your docker image
 * docker cache validating
 * **security secrets could be exposed via your files**
@@ -43,13 +44,16 @@ Don't forget to add a `.dockerignore` in your project, for two reasons :
 ```
 
 ## Fonctionnalities
+
 * Based on php:apache
 * Runs as non-root user.
-    * Capable to run with a random user in the root group (compatible with OpenShift)
-    * Port 8080 inside the container
+  * Capable to run with a random user in the root group (compatible with OpenShift)
+  * Port 8080 inside the container
 * Composer installed
 * PHP extensions from the base image and I added some
+
 ```
+# docker run larueli/php-base-image:7.4 php -m
 [PHP Modules]
 apcu
 bcmath
@@ -80,6 +84,7 @@ mongodb
 mysqlnd
 OAuth
 openssl
+pcntl
 pcre
 PDO
 PDO_Firebird
@@ -116,8 +121,7 @@ Xdebug
 Zend OPcache
 ```
 
-# Author
-
+## Author
 
 I am [Ivann LARUELLE](https://www.linkedin.com/in/ilaruelle/), engineering student in Networks & Telecommunications at the [Université de Technologie de Troyes](https://www.utt.fr/) in France, which is a public engineering university.
 
