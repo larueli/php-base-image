@@ -10,7 +10,7 @@ COPY site.conf /etc/apache2/sites-available/000-default.conf
 COPY ports.conf /etc/apache2/ports.conf
 COPY entrypoint.sh /entrypoint.sh
 
-ADD https://raw.githubusercontent.com/mlocati/docker-php-extension-installer/master/install-php-extensions /usr/local/bin/
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
 RUN chmod uga+x /usr/local/bin/install-php-extensions && sync && \
     apt-get update && apt-get install -y vim zip wget curl unzip git rsync dos2unix nano && \
