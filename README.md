@@ -50,6 +50,7 @@ Don't forget to add a `.dockerignore` in your project, for two reasons :
   * Capable to run with a random user in the root group (compatible with OpenShift)
   * Port 8080 inside the container
 * Composer installed
+* Using [wait](https://github.com/ufoscout/docker-compose-wait) on top of entrypoint 
 * PHP extensions from the base image and I added some
 
 ```

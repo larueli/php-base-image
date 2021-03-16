@@ -1,4 +1,5 @@
 #!/bin/bash
+wait-hosts
 if [ ! -z ${APACHE_DOCUMENT_ROOT} ]
 then
 	sed -ri -e "s|/var/www/html|${APACHE_DOCUMENT_ROOT}|g" /etc/apache2/sites-available/*.conf
