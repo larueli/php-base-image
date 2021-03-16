@@ -1,6 +1,6 @@
-# Base image for PHP Apps
-
 [![Build Status](https://travis-ci.com/larueli/php-base-image.svg?branch=master)](https://travis-ci.com/larueli/php-base-image)
+
+# Base image for PHP Apps
 
 I wanted to have a base image for all my php web projects, suitable with openshift (**random uid inside container**).
 
