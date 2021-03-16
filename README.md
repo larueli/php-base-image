@@ -59,6 +59,7 @@ Don't forget to add a `.dockerignore` in your project, for two reasons :
 apcu
 bcmath
 bz2
+calendar
 Core
 ctype
 curl
@@ -82,6 +83,7 @@ mbstring
 mcrypt
 memcached
 mongodb
+mysqli
 mysqlnd
 OAuth
 openssl
@@ -120,6 +122,7 @@ zlib
 [Zend Modules]
 Xdebug
 Zend OPcache
+
 ```
 
 ## Author
