@@ -1,6 +1,6 @@
 #!/bin/bash
 wait-hosts
-if [ ! -z ${APACHE_DOCUMENT_ROOT} ]
+if [ -n "${APACHE_DOCUMENT_ROOT}" ]
 then
 	sed -ri -e "s|/var/www/html|${APACHE_DOCUMENT_ROOT}|g" /etc/apache2/sites-available/*.conf
 	sed -ri -e "s|/var/www/|${APACHE_DOCUMENT_ROOT}|g" /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
@@ -8,7 +8,7 @@ fi
 
 if [ -d /docker-entrypoint-init.d ]
 then
-	if [ ! -z $(ls /docker-entrypoint-init.d/) ]
+	if [ "$(ls -A /docker-entrypoint-init.d/)" ]
 	then
 		for f in /docker-entrypoint-init.d/*; do
   		echo "     - Running $f"
