@@ -10,11 +10,11 @@ COPY site.conf /etc/apache2/sites-available/000-default.conf
 COPY ports.conf /etc/apache2/ports.conf
 COPY entrypoint.sh /entrypoint.sh
 
-ARG DOCKER_PHP_EXTENSION_INSTALLER=1.2.23
+ARG DOCKER_PHP_EXTENSION_INSTALLER=1.2.25
 ENV DOCKER_PHP_EXTENSION_INSTALLER=${DOCKER_PHP_EXTENSION_INSTALLER}
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/download/${DOCKER_PHP_EXTENSION_INSTALLER}/install-php-extensions /usr/local/bin/
 
-ARG DOCKER_COMPOSE_WAIT_VERSION=2.8.0
+ARG DOCKER_COMPOSE_WAIT_VERSION=2.9.0
 ENV DOCKER_COMPOSE_WAIT_VERSION=${DOCKER_COMPOSE_WAIT_VERSION}
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/${DOCKER_COMPOSE_WAIT_VERSION}/wait /usr/local/bin/wait-hosts
 
