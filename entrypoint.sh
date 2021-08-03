@@ -1,9 +1,13 @@
 #!/bin/bash
 wait-hosts
-if [ -n "${APACHE_DOCUMENT_ROOT}" ]
+if [ -n "${APACHE_DOCUMENT_ROOT}" ] && [ ! -f "/etc/apache2/modified" ]
 then
+	echo "Rewriting Apache Document Root"
 	sed -ri -e "s|/var/www/html|${APACHE_DOCUMENT_ROOT}|g" /etc/apache2/sites-available/*.conf
 	sed -ri -e "s|/var/www/|${APACHE_DOCUMENT_ROOT}|g" /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+	touch /etc/apache2/modified
+else
+	echo "Rewriting Apache Document Root skipped"
 fi
 
 if [ -d /docker-entrypoint-init.d ]
