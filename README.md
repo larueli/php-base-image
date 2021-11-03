@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/larueli/php-base-image.svg?branch=master)](https://travis-ci.com/larueli/php-base-image)
+[![Build Status](https://github.com/larueli/php-base-image/actions/workflows/main.yml/badge.svg)](https://github.com/larueli/php-base-image/actions/workflows/main.yml)
 
 # Base image for PHP Apps
 
