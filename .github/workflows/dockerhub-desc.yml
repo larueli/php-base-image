@@ -1,11 +1,6 @@
 name: Change dockerhub description
 
 on:
-  push:
-    branches: [ master ]
-    paths:
-      - 'README.md'
-
   workflow_dispatch:
 
 jobs:
