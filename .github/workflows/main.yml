@@ -46,6 +46,9 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/php-base-image:${{ matrix.php-version }}
           build-args: PHP_BUILD_VERSION=${{ matrix.php-version }}
+      
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
 
   latest:
     runs-on: ubuntu-latest
