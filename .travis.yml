@@ -7,7 +7,6 @@ services:
 
 stage: Build Docker Images
 env:
-  - PHP_BUILD_VERSION=8.1
   - PHP_BUILD_VERSION=8.0
   - PHP_BUILD_VERSION=7.4
   - PHP_BUILD_VERSION=7.3
@@ -24,7 +23,7 @@ jobs:
     - stage: Deploy
       if: type != pull_request AND branch = master
       env:
-        - PHP_BUILD_VERSION=8.1
+        - PHP_BUILD_VERSION=8.0
       script:
         - echo "$DOCKER_HUB_TOKEN" | docker login -u larueli --password-stdin
         - docker pull larueli/php-base-image:${PHP_BUILD_VERSION}
