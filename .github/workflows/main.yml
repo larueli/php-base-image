@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-version: ['7.1','7.2','7.3','7.4','8.0']
+        php-version: ['7.1','7.2','7.3','7.4','8.0','8.1']
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -62,5 +62,5 @@ jobs:
       - name: Push 8.0 to latest
         uses: akhilerm/tag-push-action@v2.0.0
         with:
-          src: docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/php-base-image:8.0
+          src: docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/php-base-image:8.1
           dst: docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/php-base-image:latest
