@@ -21,8 +21,8 @@ ADD https://github.com/ufoscout/docker-compose-wait/releases/download/${DOCKER_C
 
 RUN chmod uga+x /usr/local/bin/install-php-extensions && chmod uga+x /usr/local/bin/wait-hosts && sync && \
     apt-get update && apt-get install -y vim zip wget iputils-ping netcat dnsutils curl unzip git rsync dos2unix nano && \
-    echo "Php modules to be installed : " $(cat /tmp/modules/${PHP_BUILD_VERSION}) && \
-    install-php-extensions @composer $(cat /tmp/modules/${PHP_BUILD_VERSION}) && \
+    echo "Php modules to be installed : " `cat /tmp/modules/${PHP_BUILD_VERSION}` && \
+    install-php-extensions @composer `cat /tmp/modules/${PHP_BUILD_VERSION}` && \
     apt-get autoremove -y && a2enmod rewrite && mkdir /docker-entrypoint-init.d && chgrp 0 /docker-entrypoint-init.d && chmod g=rwx /docker-entrypoint-init.d && \
     sed -i 's/^Timeout [0-9]*/Timeout 3600/g' /etc/apache2/apache2.conf && \
     chgrp -R 0 /var/www/html && chmod g+rwx -R /var/www/html && chmod +x /entrypoint.sh && chmod g+rwx -R /etc/apache2 && mkdir /.composer && chmod g+rwx /.composer && \
