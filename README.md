@@ -51,7 +51,7 @@ Don't forget to add a `.dockerignore` in your project, for two reasons :
   * Port 8080 inside the container
 * Composer installed
 * Using [wait](https://github.com/ufoscout/docker-compose-wait) on top of entrypoint 
-* PHP extensions from the base image and I added some
+* PHP extensions from the base image and I added some (except mongodb for php 7.1)
 
 ```
 # docker run larueli/php-base-image:7.4 php -m
