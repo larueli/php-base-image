@@ -9,7 +9,7 @@ LABEL maintainer="ivann.laruelle@gmail.com"
 COPY site.conf /etc/apache2/sites-available/000-default.conf
 COPY ports.conf /etc/apache2/ports.conf
 COPY entrypoint.sh /entrypoint.sh
-COPY modules /tmp/
+COPY modules /tmp/modules
 
 ARG DOCKER_PHP_EXTENSION_INSTALLER=1.4.0
 ENV DOCKER_PHP_EXTENSION_INSTALLER=${DOCKER_PHP_EXTENSION_INSTALLER}
