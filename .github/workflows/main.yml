@@ -38,7 +38,7 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       
       - name: Build and push prod
-        id: docker_build
+        id: docker_build_prod
         uses: docker/build-push-action@v2
         with:
           context: ./
@@ -48,7 +48,7 @@ jobs:
           build-args: PHP_BUILD_VERSION=${{ matrix.php-version }}
 
       - name: Build and push dev
-        id: docker_build
+        id: docker_build_dev
         uses: docker/build-push-action@v2
         with:
           context: ./
