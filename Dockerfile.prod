@@ -10,7 +10,7 @@ COPY site.conf /etc/apache2/sites-available/000-default.conf
 COPY ports.conf /etc/apache2/ports.conf
 COPY entrypoint.sh /entrypoint.sh
 
-ARG DOCKER_PHP_EXTENSION_INSTALLER=1.4.8
+ARG DOCKER_PHP_EXTENSION_INSTALLER=1.4.17
 ENV DOCKER_PHP_EXTENSION_INSTALLER=${DOCKER_PHP_EXTENSION_INSTALLER}
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/download/${DOCKER_PHP_EXTENSION_INSTALLER}/install-php-extensions /usr/local/bin/
 
