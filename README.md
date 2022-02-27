@@ -43,6 +43,12 @@ Don't forget to add a `.dockerignore` in your project, for two reasons :
 .aws
 ```
 
+## Build dev
+
+```
+docker build -t larueli/php-base-image:7.1-dev -f Dockerfile.dev --build-arg PHP_BUILD_VERSION=7.1 .
+```
+
 ## Fonctionnalities
 
 * Based on php:apache

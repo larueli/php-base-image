@@ -1,7 +1,7 @@
-zend_extension=xdebug
 error_reporting=E_ALL
 display_errors=1
 display_startup_errors=1
+memory_limit=-1
 
 [xdebug]
 xdebug.mode=develop,debug
