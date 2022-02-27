@@ -1,0 +1,9 @@
+zend_extension=xdebug
+error_reporting=E_ALL
+display_errors=1
+display_startup_errors=1
+
+[xdebug]
+xdebug.mode=develop,debug
+xdebug.client_host=host.docker.internal
+xdebug.start_with_request=yes

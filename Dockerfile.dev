@@ -32,6 +32,9 @@ WORKDIR /var/www/html
 
 USER 1420:0
 
+ENV XDEBUG_SESSION=1
+COPY php.ini.dev /usr/local/etc/php/conf.d/debug_docker.ini
+
 ENTRYPOINT [ "/entrypoint.sh" ]
 
 CMD [ "apache2-foreground" ]
