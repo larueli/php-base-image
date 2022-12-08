@@ -9,7 +9,7 @@ on:
     branches: [ master ]
     paths-ignore:
       - '**.md'
-  
+
   schedule:
     - cron: '0 5 1 * *'
 
@@ -24,19 +24,19 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-version: ['7.1','7.2','7.3','7.4','8.0','8.1']
+        php-version: ['8.0','8.1','8.2']
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      
+      - uses: actions/checkout@v3
+
       - name: Login to Docker Hub
-        uses: docker/login-action@v1
+        uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-      
+
       - name: Build and push prod
         id: docker_build_prod
         uses: docker/build-push-action@v2
@@ -56,7 +56,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/php-base-image:${{ matrix.php-version }}-dev
           build-args: PHP_BUILD_VERSION=${{ matrix.php-version }}
-      
+
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
 
@@ -65,12 +65,12 @@ jobs:
     needs: build
     steps:
       - name: Login to Docker Hub
-        uses: docker/login-action@v1
+        uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-      - name: Push 8.0 to latest
-        uses: akhilerm/tag-push-action@v2.0.0
+      - name: Push 8.2 to latest
+        uses: akhilerm/tag-push-action@v2.1.0
         with:
-          src: docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/php-base-image:8.1
+          src: docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/php-base-image:8.2
           dst: docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/php-base-image:latest

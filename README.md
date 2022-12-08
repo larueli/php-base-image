@@ -10,7 +10,7 @@ Just do
 ```Dockerfile
 #Your own dockerfile for your project just needs something like this
 
-FROM larueli/php-base-image:7.3
+FROM larueli/php-base-image:8.1
 
 COPY . /var/www/html/
 
