@@ -60,7 +60,7 @@ docker build -t larueli/php-base-image:7.1-dev -f Dockerfile.dev --build-arg PHP
 * PHP extensions from the base image and I added some
 
 ```
-# docker run larueli/php-base-image:7.4 php -m
+# docker run larueli/php-base-image:8.2 php -m
 [PHP Modules]
 apcu
 bcmath
@@ -98,25 +98,23 @@ pcre
 PDO
 PDO_Firebird
 pdo_mysql
-PDO_ODBC
 pdo_pgsql
 pdo_sqlite
-pdo_sqlsrv
 pgsql
 Phar
 posix
+random
 readline
 redis
 Reflection
 session
 SimpleXML
+soap
 sodium
 SPL
 sqlite3
-sqlsrv
 standard
 tokenizer
-xdebug
 xml
 xmlreader
 xmlwriter
@@ -126,9 +124,7 @@ zip
 zlib
 
 [Zend Modules]
-Xdebug
 Zend OPcache
-
 ```
 
 ## Author

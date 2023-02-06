@@ -39,21 +39,19 @@ jobs:
 
       - name: Build and push prod
         id: docker_build_prod
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
-          context: ./
-          file: ./Dockerfile.prod
           push: true
+          target: production
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/php-base-image:${{ matrix.php-version }}
           build-args: PHP_BUILD_VERSION=${{ matrix.php-version }}
 
       - name: Build and push dev
         id: docker_build_dev
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
-          context: ./
-          file: ./Dockerfile.dev
           push: true
+          target: development
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/php-base-image:${{ matrix.php-version }}-dev
           build-args: PHP_BUILD_VERSION=${{ matrix.php-version }}
 
@@ -70,7 +68,7 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       - name: Push 8.2 to latest
-        uses: akhilerm/tag-push-action@v2.1.0
+        uses: akhilerm/tag-push-action@v2
         with:
           src: docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/php-base-image:8.2
           dst: docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/php-base-image:latest
