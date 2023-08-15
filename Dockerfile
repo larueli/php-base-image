@@ -21,7 +21,7 @@ ENV DOCKER_COMPOSE_WAIT_VERSION=${DOCKER_COMPOSE_WAIT_VERSION}
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/${DOCKER_COMPOSE_WAIT_VERSION}/wait /usr/local/bin/wait-hosts
 
 RUN chmod uga+x /usr/local/bin/install-php-extensions && chmod uga+x /usr/local/bin/wait-hosts && sync && \
-    apt-get update && apt-get install -y vim zip wget iputils-ping netcat dnsutils curl unzip git rsync dos2unix nano && \
+    apt-get update && apt-get install -y vim zip wget iputils-ping netcat-traditional dnsutils curl unzip git rsync dos2unix nano && \
     install-php-extensions @composer gd sysvsem sysvshm sysvmsg calendar soap intl gmp exif opcache apcu memcached redis pcntl imagick ctype curl phar bz2 filter iconv ldap bcmath imap mongodb pgsql oauth pdo_pgsql pdo_firebird mysqli yaml json pdo simplexml xml tokenizer xmlwriter xmlreader pdo_mysql zip && \
     apt-get autoremove -y && a2enmod rewrite && mkdir /docker-entrypoint-init.d && chgrp 0 /docker-entrypoint-init.d && chmod g=rwx /docker-entrypoint-init.d && \
     sed -i 's/^Timeout [0-9]*/Timeout 3600/g' /etc/apache2/apache2.conf && \
