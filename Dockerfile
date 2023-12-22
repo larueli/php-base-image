@@ -1,4 +1,4 @@
-ARG PHP_BUILD_VERSION=8.2
+ARG PHP_BUILD_VERSION=8.3
 
 FROM php:${PHP_BUILD_VERSION}-apache AS base
 
@@ -11,7 +11,7 @@ COPY ports.conf /etc/apache2/ports.conf
 COPY entrypoint.sh /entrypoint.sh
 
 # https://github.com/mlocati/docker-php-extension-installer/releases
-ARG DOCKER_PHP_EXTENSION_INSTALLER=2.1.58
+ARG DOCKER_PHP_EXTENSION_INSTALLER=2.1.75
 ENV DOCKER_PHP_EXTENSION_INSTALLER=${DOCKER_PHP_EXTENSION_INSTALLER}
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/download/${DOCKER_PHP_EXTENSION_INSTALLER}/install-php-extensions /usr/local/bin/
 
