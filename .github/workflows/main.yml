@@ -29,17 +29,17 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Login to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
       - name: Build and push prod
         id: docker_build_prod
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v5
         with:
           push: true
           target: production
@@ -48,7 +48,7 @@ jobs:
 
       - name: Build and push dev
         id: docker_build_dev
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v5
         with:
           push: true
           target: development
@@ -63,12 +63,12 @@ jobs:
     needs: build
     steps:
       - name: Login to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       - name: Push 8.3 to latest
-        uses: akhilerm/tag-push-action@v2.1.0
+        uses: akhilerm/tag-push-action@v2.2.0
         with:
           src: docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/php-base-image:8.3
           dst: docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/php-base-image:latest
